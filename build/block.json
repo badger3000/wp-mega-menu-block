@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/mega-menu",
+  "version": "0.1.0",
+  "title": "Mega Menu Block",
+  "category": "widgets",
+  "icon": "menu",
+  "description": "A mega menu with column support for full site editing",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "anchor": true
+  },
+  "attributes": {
+    "isDropdownOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "menuTitle": {
+      "type": "string",
+      "default": "Menu Item"
+    }
+  },
+  "textdomain": "mega-menu",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
