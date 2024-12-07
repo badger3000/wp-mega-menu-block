@@ -4,34 +4,50 @@ import {
 	InnerBlocks,
 	InspectorControls,
 } from "@wordpress/block-editor";
-import { PanelBody, TextControl, ToggleControl } from "@wordpress/components";
+import { PanelBody, TextControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import "./editor.scss";
-import "./style.scss"; // Frontend styles
+import "./style.scss";
 
 registerBlockType("create-block/mega-menu", {
 	edit: ({ attributes, setAttributes }) => {
-		const { menuTitle, isDropdownOpen } = attributes;
+		const { menuTitle } = attributes;
 		const blockProps = useBlockProps();
 
+		// Define allowed blocks
 		const ALLOWED_BLOCKS = [
 			"core/columns",
-			"core/navigation-link",
-			"core/paragraph",
+			"core/column",
 			"core/heading",
+			"core/paragraph",
+			"core/navigation",
+			"core/navigation-link",
+			"core/navigation-submenu",
+			"core/group",
+			"core/list",
 			"core/image",
 		];
+
+		// Define the template with navigation links
 		const TEMPLATE = [
 			[
 				"core/columns",
-				{},
+				{ className: "mega-menu-columns" },
 				[
 					[
 						"core/column",
 						{},
 						[
 							["core/heading", { level: 3, content: "Column 1" }],
-							["core/navigation-link", { label: "Link 1" }],
+							[
+								"core/navigation",
+								{ orientation: "vertical" },
+								[
+									["core/navigation-link", { label: "Link 1", url: "/" }],
+									["core/navigation-link", { label: "Link 2", url: "/" }],
+									["core/navigation-link", { label: "Link 3", url: "/" }],
+								],
+							],
 						],
 					],
 					[
@@ -39,7 +55,31 @@ registerBlockType("create-block/mega-menu", {
 						{},
 						[
 							["core/heading", { level: 3, content: "Column 2" }],
-							["core/navigation-link", { label: "Link 2" }],
+							[
+								"core/navigation",
+								{ orientation: "vertical" },
+								[
+									["core/navigation-link", { label: "Link 4", url: "/" }],
+									["core/navigation-link", { label: "Link 5", url: "/" }],
+									["core/navigation-link", { label: "Link 6", url: "/" }],
+								],
+							],
+						],
+					],
+					[
+						"core/column",
+						{},
+						[
+							["core/heading", { level: 3, content: "Column 3" }],
+							[
+								"core/navigation",
+								{ orientation: "vertical" },
+								[
+									["core/navigation-link", { label: "Link 7", url: "/" }],
+									["core/navigation-link", { label: "Link 8", url: "/" }],
+									["core/navigation-link", { label: "Link 9", url: "/" }],
+								],
+							],
 						],
 					],
 				],
@@ -61,16 +101,30 @@ registerBlockType("create-block/mega-menu", {
 				<div className="mega-menu-item">
 					<button
 						className="mega-menu-trigger"
-						onClick={() => setAttributes({ isDropdownOpen: !isDropdownOpen })}
+						onClick={() =>
+							setAttributes({ isDropdownOpen: !attributes.isDropdownOpen })
+						}
 					>
 						{menuTitle}
-						<span className={`dropdown-arrow ${isDropdownOpen ? "open" : ""}`}>
+						<span
+							className={`dropdown-arrow ${
+								attributes.isDropdownOpen ? "open" : ""
+							}`}
+						>
 							▼
 						</span>
 					</button>
 
-					<div className={`mega-menu-content ${isDropdownOpen ? "open" : ""}`}>
-						<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={TEMPLATE} />
+					<div
+						className={`mega-menu-content ${
+							attributes.isDropdownOpen ? "open" : ""
+						}`}
+					>
+						<InnerBlocks
+							allowedBlocks={ALLOWED_BLOCKS}
+							template={TEMPLATE}
+							templateLock={false}
+						/>
 					</div>
 				</div>
 			</div>
@@ -84,7 +138,11 @@ registerBlockType("create-block/mega-menu", {
 		return (
 			<div {...blockProps}>
 				<div className="mega-menu-item">
-					<button className="mega-menu-trigger">
+					<button
+						className="mega-menu-trigger"
+						type="button"
+						aria-expanded="false"
+					>
 						{menuTitle}
 						<span className="dropdown-arrow">▼</span>
 					</button>

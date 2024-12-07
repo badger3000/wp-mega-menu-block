@@ -1,34 +1,49 @@
 .wp-block-create-block-mega-menu {
-	border: 1px dashed #ccc;
-	padding: 20px;
+	//position: relative;
 
 	.mega-menu-trigger {
-		background: #f0f0f0;
+		background: transparent;
 		border: none;
 		padding: 10px 20px;
 		cursor: pointer;
 		display: flex;
 		align-items: center;
 		gap: 10px;
+	}
 
-		.dropdown-arrow {
-			transition: transform 0.3s ease;
-
-			&.open {
-				transform: rotate(180deg);
-			}
-		}
+	.dropdown-arrow {
+		transition: transform 0.3s ease;
 	}
 
 	.mega-menu-content {
+		position: absolute;
+		top: 100%;
+		left: 0;
 		background: #fff;
 		padding: 20px;
-		border: 1px solid #eee;
-		margin-top: 10px;
-		display: none;
-
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		min-width: 200px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(10px);
+		transition: all 0.3s ease;
+		z-index: 1000;
+		width: 100%;
 		&.open {
-			display: block;
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+	}
+}
+
+// Mobile styles
+@media (max-width: 768px) {
+	.wp-block-create-block-mega-menu {
+		.mega-menu-content {
+			position: static;
+			box-shadow: none;
+			border: 1px solid #eee;
 		}
 	}
 }

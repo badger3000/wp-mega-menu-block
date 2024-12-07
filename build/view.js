@@ -1,1 +1,64 @@
-window.megaMenuInitialized?console.log("Mega Menu already initialized, skipping"):document.addEventListener("DOMContentLoaded",(function(){console.log("DOM Content Loaded");const e=document.querySelectorAll(".wp-block-create-block-mega-menu");console.log("Found Mega Menus:",e.length),e.forEach(((e,o)=>{console.log(`Processing menu ${o}`);const n=e.querySelector(".mega-menu-trigger"),t=e.querySelector(".mega-menu-content"),l=e.querySelector(".dropdown-arrow");console.log("Menu elements:",{trigger:n?"found":"not found",content:t?"found":"not found",arrow:l?"found":"not found"}),n&&t&&(n.addEventListener("click",(function(e){console.log("Click event fired"),e.stopPropagation(),e.preventDefault();const o=t.classList.contains("open");console.log("Current state:",o?"open":"closed"),t.classList.toggle("open"),l&&(l.style.transform=o?"rotate(0deg)":"rotate(180deg)"),n.setAttribute("aria-expanded",!o),console.log("New state:",t.classList.contains("open")?"open":"closed")})),console.log("Click event listener added to trigger"))})),document.addEventListener("click",(function(o){console.log("Outside click detected"),e.forEach((e=>{if(!e.contains(o.target)){const o=e.querySelector(".mega-menu-content"),n=e.querySelector(".dropdown-arrow"),t=e.querySelector(".mega-menu-trigger");o&&o.classList.remove("open"),n&&(n.style.transform="rotate(0deg)"),t&&t.setAttribute("aria-expanded","false")}}))})),window.megaMenuInitialized=!0,console.log("Mega Menu initialization complete")}));
+/******/ (() => { // webpackBootstrap
+/*!*********************!*\
+  !*** ./src/view.js ***!
+  \*********************/
+(function () {
+  if (window.megaMenuInitialized) return;
+  document.addEventListener("DOMContentLoaded", function () {
+    const megaMenus = document.querySelectorAll(".wp-block-create-block-mega-menu");
+    megaMenus.forEach(menu => {
+      const trigger = menu.querySelector(".mega-menu-trigger");
+      const content = menu.querySelector(".mega-menu-content");
+      const arrow = menu.querySelector(".dropdown-arrow");
+
+      // Handle trigger button clicks
+      if (trigger) {
+        trigger.addEventListener("click", function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          const isOpen = content.classList.contains("open");
+          content.classList.toggle("open");
+          if (arrow) {
+            arrow.style.transform = isOpen ? "rotate(0deg)" : "rotate(180deg)";
+          }
+        });
+      }
+
+      // Remove any click handlers from navigation items
+      const navigationLinks = menu.querySelectorAll(".wp-block-navigation-link");
+      navigationLinks.forEach(link => {
+        const anchor = link.querySelector("a");
+        if (anchor) {
+          // Remove any existing click handlers
+          const newAnchor = anchor.cloneNode(true);
+          anchor.parentNode.replaceChild(newAnchor, anchor);
+        }
+      });
+    });
+
+    // Simplified outside click handler
+    document.addEventListener("click", function (e) {
+      // Don't handle if clicking a link
+      if (e.target.closest("a")) return;
+
+      // Don't handle if clicking the trigger
+      if (e.target.closest(".mega-menu-trigger")) return;
+
+      // Close menus if clicking outside
+      if (!e.target.closest(".mega-menu-content")) {
+        megaMenus.forEach(menu => {
+          const content = menu.querySelector(".mega-menu-content");
+          const arrow = menu.querySelector(".dropdown-arrow");
+          const trigger = menu.querySelector(".mega-menu-trigger");
+          if (content) content.classList.remove("open");
+          if (arrow) arrow.style.transform = "rotate(0deg)";
+          if (trigger) trigger.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+    window.megaMenuInitialized = true;
+  });
+})();
+/******/ })()
+;
+//# sourceMappingURL=view.js.map

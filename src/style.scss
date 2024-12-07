@@ -1,5 +1,5 @@
 .wp-block-create-block-mega-menu {
-	position: relative;
+	//position: relative;
 
 	.mega-menu-trigger {
 		background: transparent;
@@ -28,7 +28,7 @@
 		transform: translateY(10px);
 		transition: all 0.3s ease;
 		z-index: 1000;
-
+		width: 100%;
 		&.open {
 			opacity: 1;
 			visibility: visible;

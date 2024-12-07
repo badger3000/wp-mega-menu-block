@@ -1,1 +1,43 @@
-.wp-block-create-block-mega-menu{position:relative}.wp-block-create-block-mega-menu .mega-menu-trigger{align-items:center;background:transparent;border:none;cursor:pointer;display:flex;gap:10px;padding:10px 20px}.wp-block-create-block-mega-menu .dropdown-arrow{transition:transform .3s ease}.wp-block-create-block-mega-menu .mega-menu-content{background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);right:0;min-width:200px;opacity:0;padding:20px;position:absolute;top:100%;transform:translateY(10px);transition:all .3s ease;visibility:hidden;z-index:1000}.wp-block-create-block-mega-menu .mega-menu-content.open{opacity:1;transform:translateY(0);visibility:visible}@media(max-width:768px){.wp-block-create-block-mega-menu .mega-menu-content{border:1px solid #eee;box-shadow:none;position:static}}
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.wp-block-create-block-mega-menu .mega-menu-trigger {
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wp-block-create-block-mega-menu .dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+.wp-block-create-block-mega-menu .mega-menu-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  width: 100%;
+}
+.wp-block-create-block-mega-menu .mega-menu-content.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .wp-block-create-block-mega-menu .mega-menu-content {
+    position: static;
+    box-shadow: none;
+    border: 1px solid #eee;
+  }
+}
