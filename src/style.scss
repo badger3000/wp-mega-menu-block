@@ -1,5 +1,5 @@
 .wp-block-create-block-mega-menu {
-	//position: relative;
+	position: static; // Changed from relative
 
 	.mega-menu-trigger {
 		background: transparent;
@@ -19,20 +19,29 @@
 		position: absolute;
 		top: 100%;
 		left: 0;
+		right: 0; // Added to ensure full width
 		background: #fff;
-		padding: 20px;
+		padding: 20px 0; // Changed padding to vertical only
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		min-width: 200px;
 		opacity: 0;
 		visibility: hidden;
-		transform: translateY(10px);
+		transform: translateY(-10px);
 		transition: all 0.3s ease;
 		z-index: 1000;
-		width: 100%;
+
+		// Remove width/min-width as the group handles this
+
 		&.open {
 			opacity: 1;
 			visibility: visible;
 			transform: translateY(0);
+		}
+
+		// New - style for the group inside mega menu
+		> .wp-block-group {
+			margin: 0 auto;
+			padding-left: var(--wp--style--root--padding-left, 1rem);
+			padding-right: var(--wp--style--root--padding-right, 1rem);
 		}
 	}
 }

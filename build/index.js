@@ -54,7 +54,14 @@ __webpack_require__.r(__webpack_exports__);
     const ALLOWED_BLOCKS = ["core/columns", "core/column", "core/heading", "core/paragraph", "core/navigation", "core/navigation-link", "core/navigation-submenu", "core/group", "core/list", "core/image"];
 
     // Define the template with navigation links
-    const TEMPLATE = [["core/columns", {
+    const TEMPLATE = [["core/group", {
+      layout: {
+        inherit: !attributes.contentWidth,
+        type: "constrained",
+        contentSize: attributes.contentWidth || undefined
+      },
+      align: "full"
+    }, [["core/columns", {
       className: "mega-menu-columns"
     }, [["core/column", {}, [["core/heading", {
       level: 3,
@@ -98,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
     }], ["core/navigation-link", {
       label: "Link 9",
       url: "/"
-    }]]]]]]]];
+    }]]]]]]]]]];
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       ...blockProps,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
@@ -126,6 +133,29 @@ __webpack_require__.r(__webpack_exports__);
             }),
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Text Color", "mega-menu")
           }]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Content Width", "mega-menu"),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Custom Width", "mega-menu"),
+            value: attributes.contentWidth,
+            onChange: value => setAttributes({
+              contentWidth: value
+            }),
+            units: [{
+              value: "px",
+              label: "px"
+            }, {
+              value: "%",
+              label: "%"
+            }, {
+              value: "rem",
+              label: "rem"
+            }, {
+              value: "em",
+              label: "em"
+            }],
+            help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Leave empty to use theme default width", "mega-menu")
+          })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "mega-menu-item",

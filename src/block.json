@@ -27,6 +27,9 @@
 		},
 		"buttonTextColor": {
 			"type": "string"
+		},
+		"contentWidth": {
+			"type": "string"
 		}
 	},
 	"textdomain": "mega-menu",

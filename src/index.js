@@ -3,7 +3,8 @@ import {
 	useBlockProps,
 	InnerBlocks,
 	InspectorControls,
-	PanelColorSettings, // Add this import
+	PanelColorSettings,
+	__experimentalUnitControl as UnitControl,
 } from "@wordpress/block-editor";
 import { PanelBody, TextControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
@@ -38,53 +39,66 @@ registerBlockType("create-block/mega-menu", {
 		// Define the template with navigation links
 		const TEMPLATE = [
 			[
-				"core/columns",
-				{ className: "mega-menu-columns" },
+				"core/group",
+				{
+					layout: {
+						inherit: !attributes.contentWidth,
+						type: "constrained",
+						contentSize: attributes.contentWidth || undefined,
+					},
+					align: "full",
+				},
 				[
 					[
-						"core/column",
-						{},
+						"core/columns",
+						{ className: "mega-menu-columns" },
 						[
-							["core/heading", { level: 3, content: "Column 1" }],
 							[
-								"core/navigation",
-								{ orientation: "vertical" },
+								"core/column",
+								{},
 								[
-									["core/navigation-link", { label: "Link 1", url: "/" }],
-									["core/navigation-link", { label: "Link 2", url: "/" }],
-									["core/navigation-link", { label: "Link 3", url: "/" }],
+									["core/heading", { level: 3, content: "Column 1" }],
+									[
+										"core/navigation",
+										{ orientation: "vertical" },
+										[
+											["core/navigation-link", { label: "Link 1", url: "/" }],
+											["core/navigation-link", { label: "Link 2", url: "/" }],
+											["core/navigation-link", { label: "Link 3", url: "/" }],
+										],
+									],
 								],
 							],
-						],
-					],
-					[
-						"core/column",
-						{},
-						[
-							["core/heading", { level: 3, content: "Column 2" }],
 							[
-								"core/navigation",
-								{ orientation: "vertical" },
+								"core/column",
+								{},
 								[
-									["core/navigation-link", { label: "Link 4", url: "/" }],
-									["core/navigation-link", { label: "Link 5", url: "/" }],
-									["core/navigation-link", { label: "Link 6", url: "/" }],
+									["core/heading", { level: 3, content: "Column 2" }],
+									[
+										"core/navigation",
+										{ orientation: "vertical" },
+										[
+											["core/navigation-link", { label: "Link 4", url: "/" }],
+											["core/navigation-link", { label: "Link 5", url: "/" }],
+											["core/navigation-link", { label: "Link 6", url: "/" }],
+										],
+									],
 								],
 							],
-						],
-					],
-					[
-						"core/column",
-						{},
-						[
-							["core/heading", { level: 3, content: "Column 3" }],
 							[
-								"core/navigation",
-								{ orientation: "vertical" },
+								"core/column",
+								{},
 								[
-									["core/navigation-link", { label: "Link 7", url: "/" }],
-									["core/navigation-link", { label: "Link 8", url: "/" }],
-									["core/navigation-link", { label: "Link 9", url: "/" }],
+									["core/heading", { level: 3, content: "Column 3" }],
+									[
+										"core/navigation",
+										{ orientation: "vertical" },
+										[
+											["core/navigation-link", { label: "Link 7", url: "/" }],
+											["core/navigation-link", { label: "Link 8", url: "/" }],
+											["core/navigation-link", { label: "Link 9", url: "/" }],
+										],
+									],
 								],
 							],
 						],
@@ -103,6 +117,7 @@ registerBlockType("create-block/mega-menu", {
 							onChange={(value) => setAttributes({ menuTitle: value })}
 						/>
 					</PanelBody>
+
 					<PanelColorSettings
 						title={__("Button Colors", "mega-menu")}
 						colorSettings={[
@@ -119,6 +134,21 @@ registerBlockType("create-block/mega-menu", {
 							},
 						]}
 					/>
+
+					<PanelBody title={__("Content Width", "mega-menu")}>
+						<UnitControl
+							label={__("Custom Width", "mega-menu")}
+							value={attributes.contentWidth}
+							onChange={(value) => setAttributes({ contentWidth: value })}
+							units={[
+								{ value: "px", label: "px" },
+								{ value: "%", label: "%" },
+								{ value: "rem", label: "rem" },
+								{ value: "em", label: "em" },
+							]}
+							help={__("Leave empty to use theme default width", "mega-menu")}
+						/>
+					</PanelBody>
 				</InspectorControls>
 
 				<div className="mega-menu-item">
