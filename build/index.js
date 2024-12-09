@@ -34,9 +34,21 @@ __webpack_require__.r(__webpack_exports__);
     setAttributes
   }) => {
     const {
-      menuTitle
+      menuTitle,
+      buttonBackgroundColor,
+      buttonTextColor
     } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
+
+    // Create button style object
+    const buttonStyle = {
+      ...(buttonBackgroundColor && {
+        backgroundColor: buttonBackgroundColor
+      }),
+      ...(buttonTextColor && {
+        color: buttonTextColor
+      })
+    };
 
     // Define allowed blocks
     const ALLOWED_BLOCKS = ["core/columns", "core/column", "core/heading", "core/paragraph", "core/navigation", "core/navigation-link", "core/navigation-submenu", "core/group", "core/list", "core/image"];
@@ -89,8 +101,8 @@ __webpack_require__.r(__webpack_exports__);
     }]]]]]]]];
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       ...blockProps,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Menu Settings", "mega-menu"),
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Menu Title", "mega-menu"),
@@ -99,7 +111,22 @@ __webpack_require__.r(__webpack_exports__);
               menuTitle: value
             })
           })
-        })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Button Colors", "mega-menu"),
+          colorSettings: [{
+            value: buttonBackgroundColor,
+            onChange: color => setAttributes({
+              buttonBackgroundColor: color
+            }),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Background Color", "mega-menu")
+          }, {
+            value: buttonTextColor,
+            onChange: color => setAttributes({
+              buttonTextColor: color
+            }),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Text Color", "mega-menu")
+          }]
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "mega-menu-item",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
@@ -107,6 +134,7 @@ __webpack_require__.r(__webpack_exports__);
           onClick: () => setAttributes({
             isDropdownOpen: !attributes.isDropdownOpen
           }),
+          style: Object.keys(buttonStyle).length ? buttonStyle : null,
           children: [menuTitle, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
             className: `dropdown-arrow ${attributes.isDropdownOpen ? "open" : ""}`,
             children: "\u25BC"
@@ -126,9 +154,21 @@ __webpack_require__.r(__webpack_exports__);
     attributes
   }) => {
     const {
-      menuTitle
+      menuTitle,
+      buttonBackgroundColor,
+      buttonTextColor
     } = attributes;
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
+
+    // Create button style object
+    const buttonStyle = {
+      ...(buttonBackgroundColor && {
+        backgroundColor: buttonBackgroundColor
+      }),
+      ...(buttonTextColor && {
+        color: buttonTextColor
+      })
+    };
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       ...blockProps,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -137,6 +177,7 @@ __webpack_require__.r(__webpack_exports__);
           className: "mega-menu-trigger",
           type: "button",
           "aria-expanded": "false",
+          style: Object.keys(buttonStyle).length ? buttonStyle : null,
           children: [menuTitle, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
             className: "dropdown-arrow",
             children: "\u25BC"

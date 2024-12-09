@@ -23,6 +23,13 @@
     "menuTitle": {
       "type": "string",
       "default": "Menu Item"
+    },
+    "buttonBackgroundColor": {
+      "type": "string",
+      "default": "transparent"
+    },
+    "buttonTextColor": {
+      "type": "string"
     }
   },
   "textdomain": "mega-menu",

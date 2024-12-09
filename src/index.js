@@ -3,6 +3,7 @@ import {
 	useBlockProps,
 	InnerBlocks,
 	InspectorControls,
+	PanelColorSettings, // Add this import
 } from "@wordpress/block-editor";
 import { PanelBody, TextControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
@@ -11,8 +12,14 @@ import "./style.scss";
 
 registerBlockType("create-block/mega-menu", {
 	edit: ({ attributes, setAttributes }) => {
-		const { menuTitle } = attributes;
+		const { menuTitle, buttonBackgroundColor, buttonTextColor } = attributes;
 		const blockProps = useBlockProps();
+
+		// Create button style object
+		const buttonStyle = {
+			...(buttonBackgroundColor && { backgroundColor: buttonBackgroundColor }),
+			...(buttonTextColor && { color: buttonTextColor }),
+		};
 
 		// Define allowed blocks
 		const ALLOWED_BLOCKS = [
@@ -96,6 +103,22 @@ registerBlockType("create-block/mega-menu", {
 							onChange={(value) => setAttributes({ menuTitle: value })}
 						/>
 					</PanelBody>
+					<PanelColorSettings
+						title={__("Button Colors", "mega-menu")}
+						colorSettings={[
+							{
+								value: buttonBackgroundColor,
+								onChange: (color) =>
+									setAttributes({ buttonBackgroundColor: color }),
+								label: __("Background Color", "mega-menu"),
+							},
+							{
+								value: buttonTextColor,
+								onChange: (color) => setAttributes({ buttonTextColor: color }),
+								label: __("Text Color", "mega-menu"),
+							},
+						]}
+					/>
 				</InspectorControls>
 
 				<div className="mega-menu-item">
@@ -104,6 +127,7 @@ registerBlockType("create-block/mega-menu", {
 						onClick={() =>
 							setAttributes({ isDropdownOpen: !attributes.isDropdownOpen })
 						}
+						style={Object.keys(buttonStyle).length ? buttonStyle : null}
 					>
 						{menuTitle}
 						<span
@@ -132,9 +156,14 @@ registerBlockType("create-block/mega-menu", {
 	},
 
 	save: ({ attributes }) => {
-		const { menuTitle } = attributes;
+		const { menuTitle, buttonBackgroundColor, buttonTextColor } = attributes;
 		const blockProps = useBlockProps.save();
 
+		// Create button style object
+		const buttonStyle = {
+			...(buttonBackgroundColor && { backgroundColor: buttonBackgroundColor }),
+			...(buttonTextColor && { color: buttonTextColor }),
+		};
 		return (
 			<div {...blockProps}>
 				<div className="mega-menu-item">
@@ -142,6 +171,7 @@ registerBlockType("create-block/mega-menu", {
 						className="mega-menu-trigger"
 						type="button"
 						aria-expanded="false"
+						style={Object.keys(buttonStyle).length ? buttonStyle : null}
 					>
 						{menuTitle}
 						<span className="dropdown-arrow">▼</span>
