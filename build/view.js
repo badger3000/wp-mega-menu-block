@@ -18,9 +18,7 @@
           e.preventDefault();
           const isOpen = content.classList.contains("open");
           content.classList.toggle("open");
-          if (arrow) {
-            arrow.style.transform = isOpen ? "rotate(0deg)" : "rotate(180deg)";
-          }
+          arrow.style.transform = isOpen ? "rotate(180deg)" : "rotate(0deg)";
         });
       }
 

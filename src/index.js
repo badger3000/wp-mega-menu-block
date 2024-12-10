@@ -168,13 +168,41 @@ registerBlockType("create-block/mega-menu", {
 						style={Object.keys(buttonStyle).length ? buttonStyle : null}
 					>
 						{menuTitle}
-						<span
-							className={`dropdown-arrow ${
-								attributes.isDropdownOpen ? "open" : ""
-							}`}
-						>
-							▼
-						</span>
+						{attributes.isDropdownOpen ? (
+							<svg
+								className="dropdown-arrow open"
+								width="10"
+								height="6"
+								viewBox="0 0 10 6"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M1 1L5 5L9 1"
+									stroke={buttonTextColor}
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						) : (
+							<svg
+								className="dropdown-arrow"
+								width="10"
+								height="6"
+								viewBox="0 0 10 6"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M1 5L5 1L9 5"
+									stroke={buttonTextColor}
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						)}
 					</button>
 
 					<div
@@ -214,7 +242,41 @@ registerBlockType("create-block/mega-menu", {
 						style={Object.keys(buttonStyle).length ? buttonStyle : null}
 					>
 						{menuTitle}
-						<span className="dropdown-arrow">▼</span>
+						{attributes.isDropdownOpen ? (
+							<svg
+								className="dropdown-arrow open"
+								width="10"
+								height="6"
+								viewBox="0 0 10 6"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M1 1L5 5L9 1"
+									stroke={buttonTextColor}
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						) : (
+							<svg
+								className="dropdown-arrow"
+								width="10"
+								height="6"
+								viewBox="0 0 10 6"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M1 5L5 1L9 5"
+									stroke={buttonTextColor}
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						)}
 					</button>
 
 					<div className="mega-menu-content">

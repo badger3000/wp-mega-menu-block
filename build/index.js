@@ -174,9 +174,34 @@ __webpack_require__.r(__webpack_exports__);
             isDropdownOpen: !attributes.isDropdownOpen
           }),
           style: Object.keys(buttonStyle).length ? buttonStyle : null,
-          children: [menuTitle, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: `dropdown-arrow ${attributes.isDropdownOpen ? "open" : ""}`,
-            children: "\u25BC"
+          children: [menuTitle, attributes.isDropdownOpen ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("svg", {
+            className: "dropdown-arrow open",
+            width: "10",
+            height: "6",
+            viewBox: "0 0 10 6",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+              d: "M1 1L5 5L9 1",
+              stroke: buttonTextColor,
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round"
+            })
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("svg", {
+            className: "dropdown-arrow",
+            width: "10",
+            height: "6",
+            viewBox: "0 0 10 6",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+              d: "M1 5L5 1L9 5",
+              stroke: buttonTextColor,
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round"
+            })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: `mega-menu-content ${attributes.isDropdownOpen ? "open" : ""}`,
@@ -219,9 +244,34 @@ __webpack_require__.r(__webpack_exports__);
           type: "button",
           "aria-expanded": "false",
           style: Object.keys(buttonStyle).length ? buttonStyle : null,
-          children: [menuTitle, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+          children: [menuTitle, attributes.isDropdownOpen ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("svg", {
+            className: "dropdown-arrow open",
+            width: "10",
+            height: "6",
+            viewBox: "0 0 10 6",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+              d: "M1 1L5 5L9 1",
+              stroke: buttonTextColor,
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round"
+            })
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("svg", {
             className: "dropdown-arrow",
-            children: "\u25BC"
+            width: "10",
+            height: "6",
+            viewBox: "0 0 10 6",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+              d: "M1 5L5 1L9 5",
+              stroke: buttonTextColor,
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round"
+            })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "mega-menu-content",

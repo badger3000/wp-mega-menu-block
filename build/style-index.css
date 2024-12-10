@@ -13,12 +13,17 @@
   align-items: center;
   gap: 10px;
   outline: none;
+  white-space: nowrap;
 }
 .wp-block-create-block-mega-menu .mega-menu-trigger:focus {
   outline: none;
 }
+.wp-block-create-block-mega-menu .mega-menu-trigger:hover {
+  color: var(--wp--custom--link--hover--color) !important;
+}
 .wp-block-create-block-mega-menu .dropdown-arrow {
   transition: transform 0.3s ease;
+  transform: rotate(180deg);
 }
 .wp-block-create-block-mega-menu .mega-menu-content {
   position: absolute;

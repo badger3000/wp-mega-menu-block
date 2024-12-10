@@ -10,14 +10,18 @@
 		align-items: center;
 		gap: 10px;
 		outline: none;
-
+		white-space: nowrap;
 		&:focus {
 			outline: none; // Remove focus outline
+		}
+		&:hover {
+			color: var(--wp--custom--link--hover--color) !important;
 		}
 	}
 
 	.dropdown-arrow {
 		transition: transform 0.3s ease;
+		transform: rotate(180deg);
 	}
 
 	.mega-menu-content {
