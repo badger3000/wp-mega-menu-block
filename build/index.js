@@ -38,7 +38,9 @@ __webpack_require__.r(__webpack_exports__);
       buttonBackgroundColor,
       buttonTextColor
     } = attributes;
-    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+      className: attributes.hideOnMobile ? "hide-on-mobile" : ""
+    });
 
     // Create button style object
     const buttonStyle = {
@@ -60,7 +62,7 @@ __webpack_require__.r(__webpack_exports__);
         type: "constrained",
         contentSize: attributes.contentWidth || undefined
       },
-      align: "full"
+      className: "mega-menu-container"
     }, [["core/columns", {
       className: "mega-menu-columns"
     }, [["core/column", {}, [["core/heading", {
@@ -109,15 +111,22 @@ __webpack_require__.r(__webpack_exports__);
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       ...blockProps,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Menu Settings", "mega-menu"),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Menu Title", "mega-menu"),
             value: menuTitle,
             onChange: value => setAttributes({
               menuTitle: value
             })
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Hide on Mobile", "mega-menu"),
+            checked: attributes.hideOnMobile,
+            onChange: value => setAttributes({
+              hideOnMobile: value
+            }),
+            help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Menu will be hidden on mobile devices", "mega-menu")
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Button Colors", "mega-menu"),
           colorSettings: [{
@@ -188,7 +197,9 @@ __webpack_require__.r(__webpack_exports__);
       buttonBackgroundColor,
       buttonTextColor
     } = attributes;
-    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+      className: attributes.hideOnMobile ? "hide-on-mobile" : ""
+    });
 
     // Create button style object
     const buttonStyle = {

@@ -6,7 +6,7 @@ import {
 	PanelColorSettings,
 	__experimentalUnitControl as UnitControl,
 } from "@wordpress/block-editor";
-import { PanelBody, TextControl } from "@wordpress/components";
+import { PanelBody, TextControl, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import "./editor.scss";
 import "./style.scss";
@@ -14,7 +14,9 @@ import "./style.scss";
 registerBlockType("create-block/mega-menu", {
 	edit: ({ attributes, setAttributes }) => {
 		const { menuTitle, buttonBackgroundColor, buttonTextColor } = attributes;
-		const blockProps = useBlockProps();
+		const blockProps = useBlockProps({
+			className: attributes.hideOnMobile ? "hide-on-mobile" : "",
+		});
 
 		// Create button style object
 		const buttonStyle = {
@@ -46,7 +48,7 @@ registerBlockType("create-block/mega-menu", {
 						type: "constrained",
 						contentSize: attributes.contentWidth || undefined,
 					},
-					align: "full",
+					className: "mega-menu-container",
 				},
 				[
 					[
@@ -115,6 +117,12 @@ registerBlockType("create-block/mega-menu", {
 							label={__("Menu Title", "mega-menu")}
 							value={menuTitle}
 							onChange={(value) => setAttributes({ menuTitle: value })}
+						/>
+						<ToggleControl
+							label={__("Hide on Mobile", "mega-menu")}
+							checked={attributes.hideOnMobile}
+							onChange={(value) => setAttributes({ hideOnMobile: value })}
+							help={__("Menu will be hidden on mobile devices", "mega-menu")}
 						/>
 					</PanelBody>
 
@@ -187,7 +195,9 @@ registerBlockType("create-block/mega-menu", {
 
 	save: ({ attributes }) => {
 		const { menuTitle, buttonBackgroundColor, buttonTextColor } = attributes;
-		const blockProps = useBlockProps.save();
+		const blockProps = useBlockProps.save({
+			className: attributes.hideOnMobile ? "hide-on-mobile" : "",
+		});
 
 		// Create button style object
 		const buttonStyle = {

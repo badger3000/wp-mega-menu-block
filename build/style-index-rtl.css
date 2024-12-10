@@ -12,6 +12,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  outline: none;
+}
+.wp-block-create-block-mega-menu .mega-menu-trigger:focus {
+  outline: none;
 }
 .wp-block-create-block-mega-menu .dropdown-arrow {
   transition: transform 0.3s ease;
@@ -22,7 +26,6 @@
   right: 0;
   left: 0;
   background: #fff;
-  padding: 20px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   opacity: 0;
   visibility: hidden;
@@ -42,6 +45,9 @@
 }
 
 @media (max-width: 768px) {
+  .wp-block-create-block-mega-menu.hide-on-mobile {
+    display: none !important;
+  }
   .wp-block-create-block-mega-menu .mega-menu-content {
     position: static;
     box-shadow: none;

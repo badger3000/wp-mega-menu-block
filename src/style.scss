@@ -9,6 +9,11 @@
 		display: flex;
 		align-items: center;
 		gap: 10px;
+		outline: none;
+
+		&:focus {
+			outline: none; // Remove focus outline
+		}
 	}
 
 	.dropdown-arrow {
@@ -21,7 +26,7 @@
 		left: 0;
 		right: 0; // Added to ensure full width
 		background: #fff;
-		padding: 20px 0; // Changed padding to vertical only
+		//padding: 20px 0; // Changed padding to vertical only
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		opacity: 0;
 		visibility: hidden;
@@ -49,6 +54,9 @@
 // Mobile styles
 @media (max-width: 768px) {
 	.wp-block-create-block-mega-menu {
+		&.hide-on-mobile {
+			display: none !important;
+		}
 		.mega-menu-content {
 			position: static;
 			box-shadow: none;
